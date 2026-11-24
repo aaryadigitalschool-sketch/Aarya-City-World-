@@ -1,0 +1,6 @@
+{
+  "name": "AARYA CITY",
+  "description": "Original Nepal-inspired 3D open-world action-adventure game with third-person exploration, multi-class vehicles, dynamic weather, police wanted AI, story missions, offline saves, and online co-op.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

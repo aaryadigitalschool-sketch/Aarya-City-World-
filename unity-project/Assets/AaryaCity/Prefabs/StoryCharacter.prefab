@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &750001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_SerializedVersion: 6
+  m_Component:
+  - component: {fileID: 750002}
+  - component: {fileID: 750003}
+  - component: {fileID: 750004}
+  m_Layer: 0
+  m_Name: StoryCharacter
+  m_TagString: Untagged
+  m_IsActive: 1
+--- !u!4 &750002
+Transform:
+  m_ObjectHideFlags: 0
+  m_GameObject: {fileID: 750001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+--- !u!95 &750003
+Animator:
+  m_ObjectHideFlags: 0
+  m_GameObject: {fileID: 750001}
+  m_Enabled: 1
+  m_ApplyRootMotion: 0
+  m_CullingMode: 0
+--- !u!205 &750004
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_GameObject: {fileID: 750001}
+  m_LocalReferencePoint: {x: 0, y: 0.9, z: 0}
+  m_Size: 1.8
+  m_LODs:
+  - screenRelativeHeight: 0.35
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.12
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1

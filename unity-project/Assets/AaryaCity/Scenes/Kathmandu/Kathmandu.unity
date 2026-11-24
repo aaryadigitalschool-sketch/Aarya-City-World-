@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+--- !u!1 &300001
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 300002}
+  - component: {fileID: 300003}
+  m_Layer: 0
+  m_Name: Kathmandu_Sun
+  m_IsActive: 1
+--- !u!4 &300002
+Transform:
+  m_ObjectHideFlags: 0
+  m_GameObject: {fileID: 300001}
+  m_LocalRotation: {x: 0.42, y: -0.25, z: 0.12, w: 0.86}
+  m_LocalPosition: {x: 0, y: 50, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+--- !u!108 &300003
+Light:
+  m_ObjectHideFlags: 0
+  m_GameObject: {fileID: 300001}
+  m_Enabled: 1
+  m_Type: 1
+  m_Color: {r: 1, g: 0.95, b: 0.85, a: 1}
+  m_Intensity: 1.4
+  m_Shadows:
+    m_Type: 2

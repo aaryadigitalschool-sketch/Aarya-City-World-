@@ -1,0 +1,61 @@
+name: AARYA CITY Android Build (APK & AAB)
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_mode:
+        description: 'Build target mode'
+        required: true
+        default: 'debug'
+        type: choice
+        options:
+          - debug
+          - release
+          - aab
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache Unity Library
+        uses: actions/cache@v4
+        with:
+          path: unity-project/Library
+          key: Library-Android-${{ hashFiles('unity-project/Packages/manifest.json') }}
+
+      - name: Run Unity EditMode Tests
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: unity-project
+          unityVersion: 6000.0.28f1
+          testMode: EditMode
+
+      - name: Build Android Output
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: unity-project
+          unityVersion: 6000.0.28f1
+          targetPlatform: Android
+          androidAppBundle: ${{ inputs.build_mode == 'aab' }}
+          androidKeystoreName: ${{ secrets.ANDROID_KEYSTORE_NAME }}
+          androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
+          androidKeyaliasName: ${{ secrets.ANDROID_KEYALIAS_NAME }}
+          androidKeyaliasPass: ${{ secrets.ANDROID_KEYALIAS_PASS }}
+          buildName: AARYA_CITY_${{ inputs.build_mode }}
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: aarya-city-android-${{ inputs.build_mode }}
+          path: build/Android/*
